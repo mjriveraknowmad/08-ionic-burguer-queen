@@ -39,6 +39,10 @@ O para generar los iconos:
 `ionic g page pages/pay`
 `ionic g page pages/not-network`
 
+# Generar componentes
+`ionic g c components/toolbar`
+`ionic g c components/footer`
+
 # Generar servicio
 `ionic g s services/miservicio`
 
