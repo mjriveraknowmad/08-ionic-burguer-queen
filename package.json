@@ -12,7 +12,8 @@
     "lint": "ng lint",
     "generate-icons-android": "npx capacitor-assets generate --android",
     "generate-icons-ios": "npx capacitor-assets generate --ios",
-    "generate-icons-pwa": "npx capacitor-assets generate --pwa"
+    "generate-icons-pwa": "npx capacitor-assets generate --pwa",
+    "backend:up": "cd ../burguer-queen-nestjs && npm run start:dev"
   },
   "private": true,
   "dependencies": {

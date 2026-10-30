@@ -43,14 +43,14 @@ Una vez integrado el código, si no tenemos red, redirigirá a /not-network , pa
 `ionic g page pages/pay`
 `ionic g page pages/not-network`
 
-# Generar componentes
+## Generar componentes
 `ionic g c components/toolbar`
 `ionic g c components/footer`
 
-# Generar servicio
+## Generar servicio
 `ionic g s services/miservicio`
 
-# Generar pipe
+## Generar pipe
 `ionic g pipe pipes/mipipe`
 
 ## Generar iconos
@@ -64,6 +64,11 @@ Más info sobre el script y las dimensiones necesarias de las imágenes: [https:
 
 
 `ionic capacitor build android` 
+
+## Levantar el docker con el backend
+`docker compose -p="burguer-queen" up -d`
+luego podemos ver el swagger en localhost:3000/doc
+Otra opción es descargarse el proyecto del backend, hacer un npm install y luego `npm run start:dev` 
 
 ## Más documentación
 https://ionic-docs-lq0if04rc-ionic1.vercel.app/docs/v7/intro/cli

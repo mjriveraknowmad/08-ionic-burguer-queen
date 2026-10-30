@@ -1,0 +1,253 @@
+{
+	"info": {
+		"_postman_id": "f4759508-8caa-434d-ba3d-11c664aa788c",
+		"name": "v2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19006206"
+	},
+	"item": [
+		{
+			"name": "categories",
+			"item": [
+				{
+					"name": "getCategories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server}}{{prefixV2}}/categories",
+							"host": [
+								"{{server}}{{prefixV2}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "products",
+			"item": [
+				{
+					"name": "getProductsByCategory",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server}}{{prefixV2}}/products/category/6811178361f3013e15969977",
+							"host": [
+								"{{server}}{{prefixV2}}"
+							],
+							"path": [
+								"products",
+								"category",
+								"6811178361f3013e15969977"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getProductsById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server}}{{prefixV2}}/products/6811178361f3013e15969988",
+							"host": [
+								"{{server}}{{prefixV2}}"
+							],
+							"path": [
+								"products",
+								"6811178361f3013e15969988"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "orders",
+			"item": [
+				{
+					"name": "createOrder",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"products\": [\r\n        {\r\n            \"quantity\": 2,\r\n            \"product\": {\r\n                \"_id\": \"6811178361f3013e15969988\",\r\n                \"name\": \"label.big.menu.bacon\",\r\n                \"price\": 8.6,\r\n                \"img\": \"bacon-burger.png\",\r\n                \"extras\": [\r\n                    {\r\n                        \"name\": \"label.big.menu\",\r\n                        \"img\": \"big-menu.png\",\r\n                        \"options\": [\r\n                            {\r\n                                \"price\": 0.5,\r\n                                \"selected\": false\r\n                            }\r\n                        ]\r\n                    },\r\n                    {\r\n                        \"name\": \"label.bacon\",\r\n                        \"img\": \"bacon.png\",\r\n                        \"options\": [\r\n                            {\r\n                                \"name\": \"label.same\",\r\n                                \"price\": 0,\r\n                                \"selected\": true\r\n                            },\r\n                            {\r\n                                \"name\": \"label.remove\",\r\n                                \"price\": 0,\r\n                                \"selected\": false\r\n                            },\r\n                            {\r\n                                \"name\": \"label.extra\",\r\n                                \"price\": 0.3,\r\n                                \"selected\": false\r\n                            }\r\n                        ]\r\n                    },\r\n                    {\r\n                        \"name\": \"label.cheese\",\r\n                        \"img\": \"cheese.png\",\r\n                        \"options\": [\r\n                            {\r\n                                \"name\": \"label.same\",\r\n                                \"price\": 0,\r\n                                \"selected\": true\r\n                            },\r\n                            {\r\n                                \"name\": \"label.remove\",\r\n                                \"price\": 0,\r\n                                \"selected\": false\r\n                            },\r\n                            {\r\n                                \"name\": \"label.extra\",\r\n                                \"price\": 0.2,\r\n                                \"selected\": false\r\n                            }\r\n                        ]\r\n                    },\r\n                    {\r\n                        \"name\": \"label.meat.phopper\",\r\n                        \"img\": \"carne-phopher.png\",\r\n                        \"options\": [\r\n                            {\r\n                                \"name\": \"label.same\",\r\n                                \"price\": 0,\r\n                                \"selected\": true\r\n                            },\r\n                            {\r\n                                \"name\": \"label.extra\",\r\n                                \"price\": 1,\r\n                                \"selected\": false\r\n                            }\r\n                        ]\r\n                    },\r\n                    {\r\n                        \"name\": \"label.lettuce\",\r\n                        \"img\": \"lettuce.png\",\r\n                        \"options\": [\r\n                            {\r\n                                \"name\": \"label.same\",\r\n                                \"price\": 0,\r\n                                \"selected\": true\r\n                            },\r\n                            {\r\n                                \"name\": \"label.remove\",\r\n                                \"price\": 0,\r\n                                \"selected\": false\r\n                            },\r\n                            {\r\n                                \"name\": \"label.extra\",\r\n                                \"price\": 0.2,\r\n                                \"selected\": false\r\n                            }\r\n                        ]\r\n                    },\r\n                    {\r\n                        \"name\": \"label.tomato\",\r\n                        \"img\": \"tomato.png\",\r\n                        \"options\": [\r\n                            {\r\n                                \"name\": \"label.same\",\r\n                                \"price\": 0,\r\n                                \"selected\": true\r\n                            },\r\n                            {\r\n                                \"name\": \"label.remove\",\r\n                                \"price\": 0,\r\n                                \"selected\": false\r\n                            },\r\n                            {\r\n                                \"name\": \"label.extra\",\r\n                                \"price\": 0.2,\r\n                                \"selected\": false\r\n                            }\r\n                        ]\r\n                    },\r\n                    {\r\n                        \"name\": \"label.crunchy.onion\",\r\n                        \"img\": \"onion.png\",\r\n                        \"options\": [\r\n                            {\r\n                                \"name\": \"label.same\",\r\n                                \"price\": 0,\r\n                                \"selected\": true\r\n                            },\r\n                            {\r\n                                \"name\": \"label.remove\",\r\n                                \"price\": 0,\r\n                                \"selected\": false\r\n                            },\r\n                            {\r\n                                \"name\": \"label.extra\",\r\n                                \"price\": 0.1,\r\n                                \"selected\": false\r\n                            }\r\n                        ]\r\n                    },\r\n                    {\r\n                        \"name\": \"label.mayonnaise\",\r\n                        \"img\": \"mayonnaise.png\",\r\n                        \"options\": [\r\n                            {\r\n                                \"name\": \"label.same\",\r\n                                \"price\": 0,\r\n                                \"selected\": true\r\n                            },\r\n                            {\r\n                                \"name\": \"label.remove\",\r\n                                \"price\": 0,\r\n                                \"selected\": false\r\n                            },\r\n                            {\r\n                                \"name\": \"label.extra\",\r\n                                \"price\": 0.1,\r\n                                \"selected\": false\r\n                            }\r\n                        ]\r\n                    },\r\n                    {\r\n                        \"name\": \"label.barbecue.sauce\",\r\n                        \"img\": \"barbecue-sauce.png\",\r\n                        \"options\": [\r\n                            {\r\n                                \"name\": \"label.same\",\r\n                                \"price\": 0,\r\n                                \"selected\": true\r\n                            },\r\n                            {\r\n                                \"name\": \"label.remove\",\r\n                                \"price\": 0,\r\n                                \"selected\": false\r\n                            },\r\n                            {\r\n                                \"name\": \"label.extra\",\r\n                                \"price\": 0.1,\r\n                                \"selected\": false\r\n                            }\r\n                        ]\r\n                    },\r\n                    {\r\n                        \"name\": \"label.big.potato.classic\",\r\n                        \"img\": \"potato-classic.png\",\r\n                        \"options\": [\r\n                            {\r\n                                \"price\": 0.5,\r\n                                \"selected\": false\r\n                            }\r\n                        ]\r\n                    },\r\n                    {\r\n                        \"name\": \"label.queen.onion.rings\",\r\n                        \"img\": \"onion-ring.png\",\r\n                        \"options\": [\r\n                            {\r\n                                \"price\": 0.8,\r\n                                \"selected\": false\r\n                            }\r\n                        ]\r\n                    },\r\n                    {\r\n                        \"name\": \"label.salad.individual\",\r\n                        \"img\": \"salad.png\",\r\n                        \"options\": [\r\n                            {\r\n                                \"price\": 0.5,\r\n                                \"selected\": false\r\n                            }\r\n                        ]\r\n                    },\r\n                    {\r\n                        \"name\": \"label.big.coca.cola.drink\",\r\n                        \"img\": \"coca-cola.png\",\r\n                        \"options\": [\r\n                            {\r\n                                \"price\": 1,\r\n                                \"selected\": false\r\n                            }\r\n                        ]\r\n                    },\r\n                    {\r\n                        \"name\": \"label.big.fanta.drink\",\r\n                        \"img\": \"fanta.png\",\r\n                        \"options\": [\r\n                            {\r\n                                \"price\": 1,\r\n                                \"selected\": false\r\n                            }\r\n                        ]\r\n                    },\r\n                    {\r\n                        \"name\": \"label.big.fanta.limon.drink\",\r\n                        \"img\": \"fanta-limon.png\",\r\n                        \"options\": [\r\n                            {\r\n                                \"price\": 1,\r\n                                \"selected\": false\r\n                            }\r\n                        ]\r\n                    }\r\n                ],\r\n                \"category\": {\r\n                    \"_id\": \"6811178361f3013e15969977\",\r\n                    \"name\": \"label.menu.grill\",\r\n                    \"img\": \"grill.png\",\r\n                    \"__v\": 0\r\n                },\r\n                \"__v\": 0\r\n            }\r\n        }\r\n    ],\r\n    \"user\": {\r\n        \"_id\": \"6480e137818090918d16a612\",\r\n        \"email\": \"test@gmail.com\",\r\n        \"address\": \"Calle falsa 123\",\r\n        \"__v\": 0\r\n    },\r\n    \"address\": \"Calle falsa 123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}{{prefixV2}}/orders",
+							"host": [
+								"{{server}}{{prefixV2}}"
+							],
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "createUser",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"test2@gmail.com\",\r\n    \"password\": \"123456\",\r\n    \"address\": \"Calle falsa 456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}{{prefixV2}}/users",
+							"host": [
+								"{{server}}{{prefixV2}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUser",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RAZ21haWwuY29tIiwiaWF0IjoxNjg3MjgzMzQyLCJleHAiOjMxNzIzMTcyNTc0Mn0.OjX8p7azdt2wuZp34ZCWiT_W8Jy9_--b56q6fOtrTKU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server}}{{prefixV2}}/users?email=test@gmail.com",
+							"host": [
+								"{{server}}{{prefixV2}}"
+							],
+							"path": [
+								"users"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "test@gmail.com"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"test@gmail.com\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}{{prefixV2}}/auth/login",
+							"host": [
+								"{{server}}{{prefixV2}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "stripe",
+			"item": [
+				{
+					"name": "intent",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "<tu_api_secret>",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"secretKey\": \"<tu_api_secret>\",\r\n  \"amount\": 1000,\r\n  \"currency\": \"eur\",\r\n  \"customer_id\": \"cus_O5Y3BpUU9oSHa3\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}{{prefixV2}}/stripe/intent",
+							"host": [
+								"{{server}}{{prefixV2}}"
+							],
+							"path": [
+								"stripe",
+								"intent"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
