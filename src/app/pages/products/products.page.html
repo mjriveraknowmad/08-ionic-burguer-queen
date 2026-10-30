@@ -1,13 +1,23 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>products</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">products</ion-title>
-    </ion-toolbar>
-  </ion-header>
+
+    <ion-refresher slot="fixed" (ionRefresh)="refreshProducts($event)">
+        <ion-refresher-content />
+    </ion-refresher>
+
+    <ion-grid>
+        <ion-row>
+            @for(product of products; track product){
+                <ion-col size="6" (click)="goToProduct(product)">
+                    <ion-card class="list ion-text-center">
+                        <ion-img [src]="product.img | imageUrl" />
+                        <ion-card-header>
+                            <ion-card-title>{{product.name | translate}}</ion-card-title>
+                        </ion-card-header>
+                    </ion-card>
+                </ion-col>
+            }
+        </ion-row>
+    </ion-grid>
+
+
 </ion-content>

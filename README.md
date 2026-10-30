@@ -49,6 +49,7 @@ Una vez integrado el código, si no tenemos red, redirigirá a /not-network , pa
 
 ## Generar servicio
 `ionic g s services/Categories`
+`ionic g s services/products`
 
 ## Generar pipe
 `ionic g pipe pipes/imageUrl`
