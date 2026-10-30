@@ -3,11 +3,18 @@ import {
   IonContent,
   LoadingController,
   IonRefresher,
-  IonRefresherContent
+  IonRefresherContent,
+  IonGrid,
+  IonRow,
+  IonCol,
+  IonCard,
+  IonCardHeader,
+  IonCardTitle,
+  IonImg
 } from '@ionic/angular/standalone';
 import { CategoriesService } from 'src/app/services/categories.service';
 import { ICategory } from 'src/app/models/category.model';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-categories',
@@ -17,7 +24,15 @@ import { TranslateService } from '@ngx-translate/core';
   imports: [
     IonContent,
     IonRefresher,
-    IonRefresherContent
+    IonRefresherContent,
+    IonGrid,
+    IonRow,
+    IonCol,
+    IonCard,
+    IonCardHeader,
+    IonCardTitle,
+    IonImg,
+    TranslatePipe
   ]
 })
 export class CategoriesPage {
