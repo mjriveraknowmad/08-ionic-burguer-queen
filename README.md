@@ -29,6 +29,10 @@ Por ejemplo, para traer información del móvil
 O para generar los iconos:
 `npm install @capacitor/assets --save-dev`
 
+O para comprobar si el móvil tiene internet
+`npm install @capacitor/network@7`
+Una vez integrado el código, si no tenemos red, redirigirá a /not-network , para comprobarlo podemos ir al chrome > herramientas de desarrollador > Network conditions > En el selector de Network seleccionar offline
+
 ## Instalar librería para translates
 `npm i @ngx-translate/core@16`
 `npm i @ngx-translate/http-loader@16` 

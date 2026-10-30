@@ -5,6 +5,8 @@ import { Device, GetLanguageCodeResult } from '@capacitor/device';
 import { TranslateService } from '@ngx-translate/core';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { Network } from '@capacitor/network';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -20,6 +22,7 @@ export class AppComponent implements OnInit {
 
   private platform = inject(Platform);
   private translateService = inject(TranslateService);
+  private router: Router = inject(Router);
 
   ngOnInit(): void {
 
@@ -31,10 +34,23 @@ export class AppComponent implements OnInit {
         this.translateService.use(language.value);
       }
 
+      this.checkNetWork();
+
 
 
     })
 
+  }
+
+  checkNetWork(){
+    Network.addListener('networkStatusChange', status => {
+      console.log('Network status changed', status);
+      if(!status.connected){
+        this.router.navigateByUrl('/not-network')
+      }else{
+        this.router.navigateByUrl('/categories')
+      }
+    });
   }
 
 }
