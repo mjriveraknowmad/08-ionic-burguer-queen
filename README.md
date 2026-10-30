@@ -23,12 +23,15 @@ Usa  `cordova-res --skip-config --copy` para generar el icono de tu app y pantal
 Ejecutar `ionic capacitor run android -l --external` para actualizar automáticamente en android, aunque hay que pulsar el reload en el Android Studio, la primera vez
 
 ## Añadir plugins de capacitor
-Por ejemplo, para añadir el plugin de preferences, para guardar datos en el storage :
-`npm install @capacitor/preferences`
+Por ejemplo, para traer información del móvil
+`npm install @capacitor/device`
 
 O para generar los iconos:
 `npm install @capacitor/assets --save-dev`
 
+## Instalar librería para translates
+`npm i @ngx-translate/core@16`
+`npm i @ngx-translate/http-loader@16` 
 
 ## Generar páginas
 `ionic g page pages/categories`
