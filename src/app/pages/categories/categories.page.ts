@@ -16,6 +16,7 @@ import { CategoriesService } from 'src/app/services/categories.service';
 import { ICategory } from 'src/app/models/category.model';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { ImageUrlPipe } from 'src/app/pipes/image-url.pipe';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-categories',
@@ -42,6 +43,7 @@ export class CategoriesPage {
   private categoriesService: CategoriesService = inject(CategoriesService);
   private loadingCtrl: LoadingController = inject(LoadingController);
   private translateService: TranslateService = inject(TranslateService);
+  private router: Router = inject(Router);
 
   public categories: ICategory[] = [];
 
@@ -69,6 +71,10 @@ export class CategoriesPage {
   refreshCategories(event: CustomEvent){
     this.loadData();
     (event.target as HTMLIonRefresherElement).complete();
+  }
+
+  goToProducts(category: ICategory){
+    this.router.navigate(['products', category._id]);
   }
 
 }
