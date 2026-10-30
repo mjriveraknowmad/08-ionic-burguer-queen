@@ -7,6 +7,7 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { Network } from '@capacitor/network';
 import { Router } from '@angular/router';
+import config from 'capacitor.config';
 
 @Component({
   selector: 'app-root',
@@ -35,8 +36,8 @@ export class AppComponent implements OnInit {
       }
 
       this.checkNetWork();
-
-
+      // Habilitar el plugin CapacitorHttp. Deshabilitamos antes para no dar problemas.
+      config.plugins!.CapacitorHttp!.enabled = true;
 
     })
 
