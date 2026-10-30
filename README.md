@@ -31,7 +31,10 @@ O para generar los iconos:
 
 
 ## Generar páginas
-`ionic g page pages/mipagina`
+`ionic g page pages/categories`
+`ionic g page pages/products`
+`ionic g page pages/pay`
+`ionic g page pages/not-network`
 
 # Generar servicio
 `ionic g s services/miservicio`
