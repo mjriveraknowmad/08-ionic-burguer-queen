@@ -15,6 +15,7 @@ import {
 import { CategoriesService } from 'src/app/services/categories.service';
 import { ICategory } from 'src/app/models/category.model';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
+import { ImageUrlPipe } from 'src/app/pipes/image-url.pipe';
 
 @Component({
   selector: 'app-categories',
@@ -32,7 +33,8 @@ import { TranslatePipe, TranslateService } from '@ngx-translate/core';
     IonCardHeader,
     IonCardTitle,
     IonImg,
-    TranslatePipe
+    TranslatePipe,
+    ImageUrlPipe
   ]
 })
 export class CategoriesPage {
