@@ -48,7 +48,7 @@ Una vez integrado el código, si no tenemos red, redirigirá a /not-network , pa
 `ionic g c components/footer`
 
 ## Generar servicio
-`ionic g s services/miservicio`
+`ionic g s services/Categories`
 
 ## Generar pipe
 `ionic g pipe pipes/mipipe`
