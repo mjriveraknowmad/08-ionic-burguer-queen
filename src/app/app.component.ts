@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal, WritableSignal } from '@angular/core';
 import { IonApp, IonRouterOutlet } from '@ionic/angular/standalone';
 import { Platform} from '@ionic/angular'
 import { Device, GetLanguageCodeResult } from '@capacitor/device';
@@ -8,6 +8,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { Network } from '@capacitor/network';
 import { Router } from '@angular/router';
 import config from 'capacitor.config';
+import { UserOrderService } from './services/user-order.service';
 
 @Component({
   selector: 'app-root',
@@ -24,6 +25,8 @@ export class AppComponent implements OnInit {
   private platform = inject(Platform);
   private translateService = inject(TranslateService);
   private router: Router = inject(Router);
+  private userOrderService: UserOrderService = inject(UserOrderService);
+  public loadSignal: WritableSignal<boolean> = signal(false);
 
   ngOnInit(): void {
 
@@ -36,9 +39,12 @@ export class AppComponent implements OnInit {
       }
 
       this.checkNetWork();
-      // Habilitar el plugin CapacitorHttp. Deshabilitamos antes para no dar problemas.
+
+      await this.userOrderService.initOrder();
+
       config.plugins!.CapacitorHttp!.enabled = true;
 
+      this.loadSignal.set(true);
     })
 
   }

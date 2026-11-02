@@ -20,10 +20,6 @@ export class UserOrderService {
   public numProductsSignal!: Signal<number>;
   public totalOrderSignal!: Signal<number>;
 
-  constructor() {
-    this.initOrder();
-  }
-
   async initOrder(){
 
     const orderPreferences = await Preferences.get({
