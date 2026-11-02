@@ -17,11 +17,15 @@ import {
   IonButton,
   MenuController
 } from '@ionic/angular/standalone'
-import { TranslatePipe } from '@ngx-translate/core';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { addIcons } from 'ionicons';
 import { arrowBackOutline, cartOutline, peopleOutline } from 'ionicons/icons';
 import { UserOrderService } from 'src/app/services/user-order.service';
 import { ListProductsComponent } from '../list-products/list-products.component';
+import { LoginComponent } from '../login/login.component';
+import { Preferences } from '@capacitor/preferences';
+import { KEY_TOKEN } from 'src/app/constants';
+import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
   selector: 'app-toolbar',
@@ -44,7 +48,8 @@ import { ListProductsComponent } from '../list-products/list-products.component'
     IonLabel,
     IonBadge,
     ListProductsComponent,
-    IonButton
+    IonButton,
+    LoginComponent
   ]
 })
 export class ToolbarComponent {
@@ -52,11 +57,15 @@ export class ToolbarComponent {
   private userOrderService: UserOrderService = inject(UserOrderService);
   private menuController: MenuController = inject(MenuController);
   private router: Router = inject(Router);
+  private toastService: ToastService = inject(ToastService);
+  private translateService: TranslateService = inject(TranslateService);
 
 
   public numProductsSignal = this.userOrderService.numProductsSignal;
+  public userSignal = this.userOrderService.userSignal;
 
   public showOrder: boolean = false;
+  public showLogin: boolean = false;
 
   constructor() {
     addIcons({
@@ -72,12 +81,27 @@ export class ToolbarComponent {
 
   back(){
     this.showOrder = false;
+    this.showLogin = false;
   }
 
   goToPay(){
     this.back();
-    this.menuController.close('content'); // cierra el ion-menu que tiene menuId="content" (ahora mismo es el único ion-menu)
+    this.menuController.close('content');
     this.router.navigateByUrl('/pay')
+  }
+
+  seeLogin(){
+    this.showLogin = true;
+  }
+
+  logout(){
+    this.userOrderService.setUser(null);
+    Preferences.remove({
+      key: KEY_TOKEN
+    })
+    this.router.navigateByUrl('categories');
+
+    this.toastService.showToast(this.translateService.instant('label.logout.success'))
   }
 
 }

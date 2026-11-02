@@ -12,13 +12,13 @@ export interface IOrder {
 }
 
 export class Order {
-
+    
     private _productsSignal: WritableSignal<IQuantityProduct[]>
     private _userSignal: WritableSignal<IUser | null>
     private _addressSignal: WritableSignal<string>
     private _numProductsSignal: Signal<number>
     private _totalOrderSignal: Signal<number>
-
+    
     constructor(
         products: IQuantityProduct[] = [],
         user: IUser | null = null,
@@ -38,7 +38,7 @@ export class Order {
     public get userSignal(): Signal<IUser | null> {
         return this._userSignal.asReadonly()
     }
-
+    
     public get addressSignal(): Signal<string> {
         return this._addressSignal.asReadonly()
     }
@@ -79,7 +79,7 @@ export class Order {
         }
 
     }
-
+    
     public oneLessProduct(product: IProduct){
         const productFound = this.searchProduct(product);
 
@@ -109,7 +109,7 @@ export class Order {
     private searchProduct(product: IProduct): IQuantityProduct | undefined{
         return this._productsSignal().find( (quantityProduct: IQuantityProduct) => JSON.stringify(product) === JSON.stringify(quantityProduct.product));
     }
-
+    
     private numProducts(){
         return this._productsSignal().reduce( (sum: number, value: IQuantityProduct) => sum + value.quantity , 0)
     }
@@ -119,7 +119,7 @@ export class Order {
     }
 
     private removeProduct(product: IProduct){
-        this._productsSignal.update( products =>
+        this._productsSignal.update( products => 
             products.filter( (quantityProduct: IQuantityProduct) => JSON.stringify(product) !== JSON.stringify(quantityProduct.product) )
         )
     }

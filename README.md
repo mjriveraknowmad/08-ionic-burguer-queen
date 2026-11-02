@@ -12,6 +12,7 @@ Es una aplicación básica de Ionic con Angular 19, para aprender. Para ello lo 
 
 
 Ejecutar `ionic serve` dentro del directorio de la aplicación para ver tu app en el navegador
+Usuario de pruebas test@gmail.com 123456
 
 Ejecutar `ionic capacitor build android` para crear la aplicación de android y se abra el android studio
 
@@ -49,12 +50,15 @@ Una vez integrado el código, si no tenemos red, redirigirá a /not-network , pa
 ## Generar componentes
 `ionic g c components/toolbar`
 `ionic g c components/footer`
+`ionic g c components/login`
 
 ## Generar servicio
 `ionic g s services/Categories`
 `ionic g s services/products`
 `ionic g s services/toast`
 `ionic g s services/user-order`
+`ionic g s services/users`
+`ionic g s services/auth`
 
 ## Generar pipe
 `ionic g pipe pipes/imageUrl`
