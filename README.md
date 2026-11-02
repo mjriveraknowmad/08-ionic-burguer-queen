@@ -29,6 +29,9 @@ Por ejemplo, para traer información del móvil
 O para generar los iconos:
 `npm install @capacitor/assets --save-dev`
 
+O para persistir datos en local:
+`npm install @capacitor/preferences@7`
+
 O para comprobar si el móvil tiene internet
 `npm install @capacitor/network@7`
 Una vez integrado el código, si no tenemos red, redirigirá a /not-network , para comprobarlo podemos ir al chrome > herramientas de desarrollador > Network conditions > En el selector de Network seleccionar offline
@@ -50,6 +53,8 @@ Una vez integrado el código, si no tenemos red, redirigirá a /not-network , pa
 ## Generar servicio
 `ionic g s services/Categories`
 `ionic g s services/products`
+`ionic g s services/toast`
+`ionic g s services/user-order`
 
 ## Generar pipe
 `ionic g pipe pipes/imageUrl`

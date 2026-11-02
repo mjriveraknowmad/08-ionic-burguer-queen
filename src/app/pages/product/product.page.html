@@ -7,7 +7,7 @@
             <ion-row>
                 <ion-col>
                     <ion-item lines="none">
-                        <ion-label>{{'label.price' | translate}}: {{product.price * quantitySignal()}}€</ion-label>
+                        <ion-label>{{'label.price' | translate}}: {{product | calculateTotalPrice:quantitySignal()}} €</ion-label>
                         <ion-button [disabled]="quantitySignal() == 1" (click)="minusQuantity()">
                             <ion-icon name="remove-outline" />
                         </ion-button>
@@ -45,7 +45,7 @@
                                 <ion-card-content>
                                     @if(extra.options.length == 1){
 
-                                        <ion-checkbox 
+                                        <ion-checkbox
                                         [(ngModel)]="extra.options[0].selected"
                                         name="checkbox"
                                         labelPlacement="end">
@@ -65,7 +65,7 @@
                                                         </ion-radio>
                                                     </ion-item>
                                                 }
-                                                
+
                                             }
 
                                         </ion-radio-group>
@@ -79,6 +79,11 @@
 
         </ion-grid>
 
+        <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+            <ion-fab-button (click)="addProductOrder(product)">
+              <ion-icon name="add-outline" />
+            </ion-fab-button>
+        </ion-fab>
 
     }
 

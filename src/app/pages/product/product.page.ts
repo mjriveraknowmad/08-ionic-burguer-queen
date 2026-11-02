@@ -1,6 +1,6 @@
 import { Component, inject, Input, signal, WritableSignal } from '@angular/core';
-import { 
-  IonContent, 
+import {
+  IonContent,
   LoadingController,
   IonGrid,
   IonRow,
@@ -18,7 +18,9 @@ import {
   IonCardContent,
   IonCheckbox,
   IonRadioGroup,
-  IonRadio
+  IonRadio,
+  IonFab,
+  IonFabButton
 } from '@ionic/angular/standalone';
 import { RadioGroupCustomEvent } from '@ionic/core'
 import { Router } from '@angular/router';
@@ -30,6 +32,9 @@ import { addIcons } from 'ionicons';
 import { addOutline, removeOutline } from 'ionicons/icons';
 import { FormsModule } from '@angular/forms';
 import { IProductExtraOption } from 'src/app/models/product-extra-option.model';
+import { CalculateTotalPricePipe } from 'src/app/pipes/calculate-total-price.pipe';
+import { ToastService } from 'src/app/services/toast.service';
+import { UserOrderService } from 'src/app/services/user-order.service';
 
 
 @Component({
@@ -58,7 +63,10 @@ import { IProductExtraOption } from 'src/app/models/product-extra-option.model';
     IonCheckbox,
     FormsModule,
     IonRadioGroup,
-    IonRadio
+    IonRadio,
+    CalculateTotalPricePipe,
+    IonFab,
+    IonFabButton
   ]
 })
 export class ProductPage {
@@ -67,6 +75,8 @@ export class ProductPage {
   private productsService: ProductsService = inject(ProductsService);
   private loadingCtrl: LoadingController = inject(LoadingController);
   private translateService: TranslateService = inject(TranslateService);
+  private toastService: ToastService = inject(ToastService);
+  private userOrderService: UserOrderService = inject(UserOrderService);
 
   @Input() idProduct!: string;
 
@@ -122,7 +132,25 @@ export class ProductPage {
     options.forEach(op => op.selected = event.detail.value == op.name);
 
     console.log(options);
-    
+
+  }
+
+  addProductOrder(product: IProduct){
+
+    console.log(product);
+    console.log(this.quantitySignal());
+
+    this.userOrderService.addProduct(product, this.quantitySignal())
+
+    console.log(this.userOrderService.productsSignal());
+    console.log(this.userOrderService.numProductsSignal());
+    console.log(this.userOrderService.totalOrderSignal());
+
+
+    this.toastService.showToast(this.translateService.instant('label.product.add.success'));
+
+    this.router.navigateByUrl('categories');
+
   }
 
 }
