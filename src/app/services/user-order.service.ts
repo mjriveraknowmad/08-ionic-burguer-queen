@@ -49,7 +49,7 @@ export class UserOrderService {
     this.addressSignal = this.order.addressSignal;
     this.numProductsSignal = this.order.numProductsSignal
     this.totalOrderSignal = this.order.totalOrderSignal
-    
+
     if(!orderPreferences.value){
       this.saveOrder();
     }
@@ -77,6 +77,31 @@ export class UserOrderService {
 
   public addProduct(product: IProduct, quantity: number = 1){
     this.order.addProduct(product, quantity);
+    this.saveOrder();
+  }
+
+  public oneMoreProduct(product: IProduct){
+    this.order.oneMoreProduct(product);
+    this.saveOrder();
+  }
+
+  public oneLessProduct(product: IProduct){
+    this.order.oneLessProduct(product);
+    this.saveOrder();
+  }
+
+  public resetOrder(){
+    this.order.resetOrder();
+    this.saveOrder();
+  }
+
+  public setUser(user: IUser){
+    this.order.setUser(user);
+    this.saveOrder();
+  }
+
+  public setAddress(address: string){
+    this.order.setAddress(address);
     this.saveOrder();
   }
 

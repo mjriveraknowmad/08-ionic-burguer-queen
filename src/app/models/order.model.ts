@@ -12,13 +12,13 @@ export interface IOrder {
 }
 
 export class Order {
-    
+
     private _productsSignal: WritableSignal<IQuantityProduct[]>
     private _userSignal: WritableSignal<IUser | null>
     private _addressSignal: WritableSignal<string>
     private _numProductsSignal: Signal<number>
     private _totalOrderSignal: Signal<number>
-    
+
     constructor(
         products: IQuantityProduct[] = [],
         user: IUser | null = null,
@@ -38,7 +38,7 @@ export class Order {
     public get userSignal(): Signal<IUser | null> {
         return this._userSignal.asReadonly()
     }
-    
+
     public get addressSignal(): Signal<string> {
         return this._addressSignal.asReadonly()
     }
@@ -69,16 +69,59 @@ export class Order {
 
     }
 
+    public oneMoreProduct(product: IProduct){
+
+        const productFound = this.searchProduct(product);
+
+        if(productFound){
+            productFound.quantity++;
+            this._productsSignal.set([...this._productsSignal()]);
+        }
+
+    }
+
+    public oneLessProduct(product: IProduct){
+        const productFound = this.searchProduct(product);
+
+        if(productFound){
+            productFound.quantity--;
+            if(productFound.quantity == 0){
+                this.removeProduct(productFound.product);
+            }else{
+                this._productsSignal.set([...this._productsSignal()]);
+            }
+        }
+    }
+
+    public resetOrder(){
+        this._productsSignal.set([]);
+        this._addressSignal.set('');
+    }
+
+    public setUser(user: IUser | null){
+        this._userSignal.set(user);
+    }
+
+    public setAddress(address: string){
+        this._addressSignal.set(address);
+    }
+
     private searchProduct(product: IProduct): IQuantityProduct | undefined{
         return this._productsSignal().find( (quantityProduct: IQuantityProduct) => JSON.stringify(product) === JSON.stringify(quantityProduct.product));
     }
-    
+
     private numProducts(){
         return this._productsSignal().reduce( (sum: number, value: IQuantityProduct) => sum + value.quantity , 0)
     }
 
     private totalOrder(){
         return this._productsSignal().reduce( (sum: number, value: IQuantityProduct) => sum + calculateTotalPrice(value.product, value.quantity) , 0)
+    }
+
+    private removeProduct(product: IProduct){
+        this._productsSignal.update( products =>
+            products.filter( (quantityProduct: IQuantityProduct) => JSON.stringify(product) !== JSON.stringify(quantityProduct.product) )
+        )
     }
 
 }
