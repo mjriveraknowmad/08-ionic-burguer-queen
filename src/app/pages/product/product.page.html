@@ -1,7 +1,6 @@
 <ion-content [fullscreen]="true">
-    @let product = productSignal();
 
-    @if(product){
+    @if(productSignal(); as product){
 
         <ion-grid>
 
@@ -44,7 +43,33 @@
                                     </ion-card-title>
                                 </ion-card-header>
                                 <ion-card-content>
+                                    @if(extra.options.length == 1){
 
+                                        <ion-checkbox 
+                                        [(ngModel)]="extra.options[0].selected"
+                                        name="checkbox"
+                                        labelPlacement="end">
+
+                                            @let extraCheckbox = extra.options[0];
+
+                                            {{extraCheckbox.selected ? extraCheckbox.price : '0'}}€
+                                        </ion-checkbox>
+                                    } @else {
+                                        <ion-radio-group [value]="extra.options[0].name" (ionChange)="changeMultipleOptions($event, extra.options)">
+
+                                            @for(option of extra.options; track option){
+                                                @if(option.name){
+                                                    <ion-item lines="none">
+                                                        <ion-radio [value]="option.name">
+                                                            {{option.name | translate}} ({{option.price}}€)
+                                                        </ion-radio>
+                                                    </ion-item>
+                                                }
+                                                
+                                            }
+
+                                        </ion-radio-group>
+                                    }
                                 </ion-card-content>
                             </ion-card>
                         </ion-col>

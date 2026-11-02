@@ -15,8 +15,12 @@ import {
   IonButton,
   IonIcon,
   IonText,
-  IonCardContent
+  IonCardContent,
+  IonCheckbox,
+  IonRadioGroup,
+  IonRadio
 } from '@ionic/angular/standalone';
+import { RadioGroupCustomEvent } from '@ionic/core'
 import { Router } from '@angular/router';
 import { ProductsService } from 'src/app/services/products.service';
 import { IProduct } from 'src/app/models/product.model';
@@ -24,6 +28,8 @@ import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { ImageUrlPipe } from 'src/app/pipes/image-url.pipe';
 import { addIcons } from 'ionicons';
 import { addOutline, removeOutline } from 'ionicons/icons';
+import { FormsModule } from '@angular/forms';
+import { IProductExtraOption } from 'src/app/models/product-extra-option.model';
 
 
 @Component({
@@ -48,7 +54,11 @@ import { addOutline, removeOutline } from 'ionicons/icons';
     IonButton,
     IonIcon,
     IonText,
-    IonCardContent
+    IonCardContent,
+    IonCheckbox,
+    FormsModule,
+    IonRadioGroup,
+    IonRadio
   ]
 })
 export class ProductPage {
@@ -108,5 +118,11 @@ export class ProductPage {
     this.quantitySignal.update( value => value + 1);
   }
 
+  changeMultipleOptions(event: RadioGroupCustomEvent, options: IProductExtraOption[]){
+    options.forEach(op => op.selected = event.detail.value == op.name);
+
+    console.log(options);
+    
+  }
 
 }
