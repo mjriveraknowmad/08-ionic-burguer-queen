@@ -1,5 +1,5 @@
 
-<ion-menu contentId="content" side="end">
+<ion-menu contentId="content" menuId="content" side="end">
   
   <ion-header>
     <ion-toolbar>
@@ -30,7 +30,7 @@
     }
     
     @if(showOrder){
-      <app-list-products />
+      <app-list-products (pay)="goToPay()" />
     }
   
   </ion-content>

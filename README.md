@@ -58,6 +58,7 @@ Una vez integrado el código, si no tenemos red, redirigirá a /not-network , pa
 
 ## Generar pipe
 `ionic g pipe pipes/imageUrl`
+`ionic g pipe pipes/extrasSelected`
 
 ## Generar iconos
 Se añadieron los scripts correspondientes en el package.json, y las imagenes en la carpeta resources

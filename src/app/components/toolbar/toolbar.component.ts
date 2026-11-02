@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import {
   IonHeader,
   IonToolbar,
@@ -14,7 +14,8 @@ import {
   IonIcon,
   IonLabel,
   IonBadge,
-  IonButton
+  IonButton,
+  MenuController
 } from '@ionic/angular/standalone'
 import { TranslatePipe } from '@ngx-translate/core';
 import { addIcons } from 'ionicons';
@@ -49,6 +50,9 @@ import { ListProductsComponent } from '../list-products/list-products.component'
 export class ToolbarComponent {
 
   private userOrderService: UserOrderService = inject(UserOrderService);
+  private menuController: MenuController = inject(MenuController);
+  private router: Router = inject(Router);
+
 
   public numProductsSignal = this.userOrderService.numProductsSignal;
 
@@ -68,6 +72,12 @@ export class ToolbarComponent {
 
   back(){
     this.showOrder = false;
+  }
+
+  goToPay(){
+    this.back();
+    this.menuController.close('content'); // cierra el ion-menu que tiene menuId="content" (ahora mismo es el único ion-menu)
+    this.router.navigateByUrl('/pay')
   }
 
 }
