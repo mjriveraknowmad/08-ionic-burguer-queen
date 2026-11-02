@@ -1,0 +1,25 @@
+<ion-grid>
+
+  <ion-row>
+    <ion-col>
+      <ion-item lines="none">
+        <ion-label>{{'label.total.order' | translate }} {{totalOrderSignal()}}€</ion-label>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col>
+
+      <ion-list>
+        @for(quantityProduct of productsSignal(); track quantityProduct){
+          <ion-item>
+            <ion-label class="ion-text-wrap">{{quantityProduct.product.name | translate}}</ion-label>
+          </ion-item>
+        }
+      </ion-list>
+
+    </ion-col>
+  </ion-row>
+
+</ion-grid>
