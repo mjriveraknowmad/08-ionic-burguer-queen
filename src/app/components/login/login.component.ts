@@ -46,6 +46,7 @@ export class LoginComponent{
 
   @Output() doLogin: EventEmitter<void> = new EventEmitter<void>();
   @Output() back: EventEmitter<void> = new EventEmitter<void>();
+  @Output() newAccount: EventEmitter<void> = new EventEmitter<void>();
 
   public formLogin: FormGroup = this.formBuilder.group({
     email: ['', Validators.required],
@@ -87,6 +88,10 @@ export class LoginComponent{
 
   exit(){
     this.back.emit();
+  }
+
+  createNewAccount(){
+    this.newAccount.emit();
   }
   
 }

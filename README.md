@@ -51,6 +51,7 @@ Una vez integrado el código, si no tenemos red, redirigirá a /not-network , pa
 `ionic g c components/toolbar`
 `ionic g c components/footer`
 `ionic g c components/login`
+`ionic g c components/createAccount`
 
 ## Generar servicio
 `ionic g s services/Categories`

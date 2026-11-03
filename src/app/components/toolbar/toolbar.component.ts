@@ -26,6 +26,7 @@ import { LoginComponent } from '../login/login.component';
 import { Preferences } from '@capacitor/preferences';
 import { KEY_TOKEN } from 'src/app/constants';
 import { ToastService } from 'src/app/services/toast.service';
+import { CreateAccountComponent } from '../create-account/create-account.component';
 
 @Component({
   selector: 'app-toolbar',
@@ -49,7 +50,8 @@ import { ToastService } from 'src/app/services/toast.service';
     IonBadge,
     ListProductsComponent,
     IonButton,
-    LoginComponent
+    LoginComponent,
+    CreateAccountComponent
   ]
 })
 export class ToolbarComponent {
@@ -66,6 +68,7 @@ export class ToolbarComponent {
 
   public showOrder: boolean = false;
   public showLogin: boolean = false;
+  public showNewAccount: boolean = false;
 
   constructor() {
     addIcons({
@@ -82,6 +85,7 @@ export class ToolbarComponent {
   back(){
     this.showOrder = false;
     this.showLogin = false;
+    this.showNewAccount = false;
   }
 
   goToPay(){
@@ -91,6 +95,7 @@ export class ToolbarComponent {
   }
 
   seeLogin(){
+    this.showNewAccount = false;
     this.showLogin = true;
   }
 
@@ -102,6 +107,11 @@ export class ToolbarComponent {
     this.router.navigateByUrl('categories');
 
     this.toastService.showToast(this.translateService.instant('label.logout.success'))
+  }
+
+  seeNewAccount(){
+    this.showLogin = false;
+    this.showNewAccount = true;
   }
 
 }

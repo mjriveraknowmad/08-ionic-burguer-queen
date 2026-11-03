@@ -33,5 +33,19 @@ export class UsersService {
 
   }
 
+  createUser(user: IUser){
+    return CapacitorHttp.post({
+      url: this.URL_BASE,
+      params: {},
+      data: {
+        ...user
+      },
+      headers: {
+        'Content-type': 'application/json'
+      }
+    }).then( (response: HttpResponse) => {
+      return response.data as IUser
+    })
+  }
 
 }
