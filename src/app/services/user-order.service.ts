@@ -45,7 +45,7 @@ export class UserOrderService {
     this.addressSignal = this.order.addressSignal;
     this.numProductsSignal = this.order.numProductsSignal
     this.totalOrderSignal = this.order.totalOrderSignal
-    
+
     if(!orderPreferences.value){
       this.saveOrder();
     }
@@ -63,7 +63,7 @@ export class UserOrderService {
 
   }
 
-  private getOrder(): IOrder{
+  public getOrder(): IOrder{
     return {
       products: this.productsSignal(),
       user: this.userSignal(),

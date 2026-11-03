@@ -33,6 +33,13 @@ O para generar los iconos:
 O para persistir datos en local:
 `npm install @capacitor/preferences@7`
 
+O para empaquetar android:
+`npm install @capacitor/android@7`
+
+O para añadir componentes típicos de pago de Stripe (PaymentSheet):
+`npm install @capacitor-community/stripe@7`
+Ejemplos y más info en: https://github.com/capacitor-community/stripe
+
 O para comprobar si el móvil tiene internet
 `npm install @capacitor/network@7`
 Una vez integrado el código, si no tenemos red, redirigirá a /not-network , para comprobarlo podemos ir al chrome > herramientas de desarrollador > Network conditions > En el selector de Network seleccionar offline
@@ -40,6 +47,7 @@ Una vez integrado el código, si no tenemos red, redirigirá a /not-network , pa
 ## Instalar librería para translates
 `npm i @ngx-translate/core@16`
 `npm i @ngx-translate/http-loader@16` 
+
 
 ## Generar páginas
 `ionic g page pages/categories`
@@ -60,6 +68,8 @@ Una vez integrado el código, si no tenemos red, redirigirá a /not-network , pa
 `ionic g s services/user-order`
 `ionic g s services/users`
 `ionic g s services/auth`
+`ionic g s services/stripe`
+`ionic g s services/orders`
 
 ## Generar pipe
 `ionic g pipe pipes/imageUrl`
