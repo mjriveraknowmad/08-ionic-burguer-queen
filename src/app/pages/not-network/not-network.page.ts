@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { 
+import {
   IonContent,
   IonGrid,
   IonRow,
@@ -24,11 +24,6 @@ import { TranslatePipe } from '@ngx-translate/core';
     TranslatePipe
   ]
 })
-export class NotNetworkPage implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
+export class NotNetworkPage {
 
 }
