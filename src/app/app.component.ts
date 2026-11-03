@@ -52,9 +52,10 @@ export class AppComponent implements OnInit {
   checkNetWork(){
     Network.addListener('networkStatusChange', status => {
       console.log('Network status changed', status);
+      // Sino esta conectado, lo redirigiremos a la pagina de "not-network"
       if(!status.connected){
         this.router.navigateByUrl('/not-network')
-      }else{
+      }else if(status.connected && this.router.url == '/not-network') { // solo si esta conectado y está en ruta "not-network", a veces redirigía al probar en móvil, sin razón aparente
         this.router.navigateByUrl('/categories')
       }
     });
